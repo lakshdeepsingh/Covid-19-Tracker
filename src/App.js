@@ -8,7 +8,6 @@ import {
   CardContent,
 } from "@material-ui/core";
 import InfoBox from "./InfoBox";
-import Map from "./Map";
 import Table from "./Table";
 //https://disease.sh/v3/covid-19/all
 // USEEFFECT IS A HOOK IN REACT WHICH RUNS A PIECE OF CODE BASED ON A CONDITION
@@ -39,7 +38,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setCountry(countryCode);
-        setCountryInfo(data); //Al of the data from the country
+        setCountryInfo(data); //All of the data from the country
       });
   };
   //console.log("***********888", countryInfo);       To see whats coming back from API
@@ -60,7 +59,8 @@ function App() {
 
     getCountriesData();
   }, []);
-
+  console.log("###########", countries);
+  console.log("TABLE DATA : ", tableData);
   return (
     <div className="app">
       <div className="app_left">
@@ -100,13 +100,11 @@ function App() {
             total={countryInfo.deaths}
           />
         </div>
-        <Map />
       </div>
       <Card className="app_right">
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table countries={tableData} />
-          {/*<h3>Worldwide new cases</h3>*/}
         </CardContent>
       </Card>
     </div>
